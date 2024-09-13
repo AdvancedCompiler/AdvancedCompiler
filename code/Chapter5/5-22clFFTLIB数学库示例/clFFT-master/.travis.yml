@@ -1,0 +1,160 @@
+# Ubuntu name decoder ring; https://en.wikipedia.org/wiki/List_of_Ubuntu_releases
+# Ubuntu 12.04 LTS (Precise Pangolin) <== Travis CI VM image
+# Ubuntu 12.10 (Quantal Quetzal)
+# Ubuntu 13.04 (Raring Ringtail)
+# Ubuntu 13.10 (Saucy Salamander)
+# Ubuntu 14.04 LTS (Trusty Tahr)
+# Ubuntu 14.10 (Utopic Unicorn)
+# Ubuntu 15.04 (Vivid Vervet)
+# Ubuntu 15.10 (Wily Werewolf)
+# Ubuntu 16.04 LTS (Xenial Xantus)
+
+# language: instructs travis what compilers && environment to set up in build matrix
+language: cpp
+
+# sudo: false instructs travis to build our project in a docker VM (faster)
+# Can not yet install fglrx packages with 'false'
+sudo: required # false
+dist: trusty
+
+# os: expands the build matrix to include multiple os's
+# disable linux, as we get sporadic failures on building boost, needs investigation
+os:
+  - linux
+  - osx
+
+# compiler: expands the build matrix to include multiple compilers (per os)
+compiler:
+  - gcc
+  - clang
+
+addons:
+  # apt: is disabled on osx builds
+  # apt: needed by docker framework to install project dependencies without
+  # sudo.  Apt uses published Ubunto PPA's from https://launchpad.net/
+  # https://github.com/travis-ci/apt-source-whitelist/blob/master/ubuntu.json
+  apt:
+    sources:
+      # ubuntu-toolchain-r-test contains newer versions of gcc to install
+      # - ubuntu-toolchain-r-test
+      # llvm-toolchain-precise-3.6 contains newer versions of clang to install
+      # - llvm-toolchain-precise-3.6
+      # kubuntu-backports contains newer versions of cmake to install
+      - kubuntu-backports
+      # boost-latest contains boost v1.55
+      - boost-latest
+    packages:
+      # g++-4.8 is minimum version considered to be the first good c++11 gnu compiler
+      # - g++-4.8
+      # - clang-3.6
+      # We require v2.8.12 minimum
+      - cmake
+      - libfftw3-dev
+      - libfftw3-single3
+      - libfftw3-double3
+      # I'm finding problems between pre-compiled versions of boost ublas, with gtest
+      # stl_algobase.h: error: no matching function for call to swap()
+      - libboost-program-options1.55-dev
+      # - libboost-serialization1.55-dev
+      # - libboost-filesystem1.55-dev
+      # - libboost-system1.55-dev
+      # - libboost-regex1.55-dev
+      # The package opencl-headers on 'precise' only installs v1.1 cl headers; uncomment for 'trusty' or greater
+#      - opencl-headers
+      # Uncomment one of the following when fglrx modules are added to the apt whitelist
+#      - fglrx
+#      - fglrx=2:8.960-0ubuntu1
+#      - fglrx=2:13.350.1-0ubuntu0.0.1
+
+# env: specifies additional global variables to define per row in build matrix
+env:
+  global:
+    - CLFFT_ROOT=${TRAVIS_BUILD_DIR}/bin/make/release
+    - OPENCL_REGISTRY=https://www.khronos.org/registry/cl
+    - OPENCL_ROOT=${TRAVIS_BUILD_DIR}/bin/opencl
+
+# The following filters our build matrix; we are interested in linux-gcc & osx-clang
+matrix:
+  exclude:
+    - os: linux
+      compiler: clang
+    - os: osx
+      compiler: gcc
+
+before_install:
+  # Remove the following linux clause when fglrx can be installed with sudo: false
+  - if [ ${TRAVIS_OS_NAME} == "linux" ]; then
+      sudo apt-get update -qq &&
+      sudo apt-get install -qq libboost-all-dev;
+      export BUILD_BOOST="OFF";
+    fi
+  - if [ ${TRAVIS_OS_NAME} == "linux" ]; then
+      export OPENCL_ROOT="${TRAVIS_BUILD_DIR}/opencl-headers";
+    fi
+  - if [ ${TRAVIS_OS_NAME} == "osx" ]; then
+      brew update;
+      brew outdated boost || brew upgrade boost;
+      brew outdated cmake || brew upgrade cmake;
+    fi
+# - if [ ${CXX} = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
+  - cmake --version;
+  - ${CC} --version;
+  - ${CXX} --version;
+
+install:
+  # The following linux logic is necessary because of Travis's move to the GCE platform, which does not
+  # currently contain packages for fglrx: https://github.com/travis-ci/travis-ci/issues/5221
+  # We build our own linkable .so file
+  - if [ ${TRAVIS_OS_NAME} == "linux" ]; then
+      mkdir -p ${OPENCL_ROOT};
+      pushd ${OPENCL_ROOT};
+      travis_retry git clone --depth 1 https://github.com/KhronosGroup/OpenCL-ICD-Loader.git;
+      mv ./OpenCL-ICD-Loader/* .;
+      travis_retry git clone --depth 1 https://github.com/KhronosGroup/OpenCL-Headers.git inc/CL_headers_repo;
+      pushd inc;
+      mkdir CL;
+      cp CL_headers_repo/opencl22/CL/* CL/;
+      popd;
+      mkdir -p lib;
+      pushd lib;
+      cmake -G "Unix Makefiles" ..;
+      make;
+      sudo cp ./lib/libOpenCL.so /usr/local/lib;
+      popd;
+      pushd inc/CL;
+      rm -rf *;
+      cp -r ../CL_headers_repo/opencl12/CL/* .;
+      popd;
+      sudo cp -r inc/CL /usr/local/include/;
+      popd;
+    fi
+
+  # osx image does not contain cl.hpp file; download from Khronos
+  # - if [ ${TRAVIS_OS_NAME} == "osx" ]; then
+  #     pushd /System/Library/Frameworks/OpenCL.framework/Versions/A/Headers/;
+  #     sudo wget -w 1 -np -nd -nv -A h,hpp https://www.khronos.org/registry/cl/api/1.2/cl.hpp;
+  #     popd;
+  #   fi
+
+# Use before_script: to run configure steps
+before_script:
+  - mkdir -p ${CLFFT_ROOT}
+  - pushd ${CLFFT_ROOT}
+  - cmake -DCMAKE_BUILD_TYPE=Release -DBoost_NO_SYSTEM_PATHS=OFF ${TRAVIS_BUILD_DIR}/src
+
+# use script: to execute build steps
+script:
+  - make package
+
+deploy:
+  provider: releases
+  prerelease: true
+  draft: true
+  skip_cleanup: true
+  api_key:
+    secure: "Bx51QUNYPnJlkJS7D97huRxYzs26kOZst76S0uTmBWp8ZU7gAm6mY79pFbXW9mkL2r6EPX5l5p+pPOwo1kmN/eB3jicamA07oLcI0ZQw4XLxszVEiOLMNXSLFYnsee0RkVX4fu453XXOFDoQupN/JKHUtp4VReJHIiWgQPnvF3Xu7kBLGecKr9IrWV23ig+7z3oiTEO+MTIR/z9mmHnzdAf4K0Nh+9BdtI2QVuVbpRZxPRqLIakMHoYw18h2SdY44wYK+sC+AroU9QWCr5t26GJDzWdu0nrv05ChQqaC128z8+hs+jaPbx39ByBH3BxD05FrKtCO3W0O6VycHewFitrMeMCkXizDn3XzXRkw8bM8OpqFPW/++f5DqxgN+Yh9eIb2vY1QiBjaQ6VIvd/9egVILw6/cxVXlym9iNVwuO2ZG0COKMHoLP/2ZlvPbuoXYgEtZYqqUnvBHVu1SxzrABxR+Cp44McbuB2EFLHYxjA7msF/h+yilfE5e4FdD91MpjR26ASmP3rMx9xUe6h28rGgei3RXNNeF0vnMO65qwfImuUbQ3/on+KW6LlMKFptqq3Twp7wcBdh433bvsrwCW0BDP0eanWuImpS0z3reqcTJFrl0rzplpQmJAW38dcSWTI7MvlDKcMHLJMNy+2or7mIGCj1m9o9Yr6INC7W2Rg="
+  file: ${CLFFT_ROOT}/*.tar.gz
+  file_glob: true
+  on:
+    all_branches: true
+    tags: true

@@ -1,0 +1,12 @@
+如果只是运行mpi程序，linux下需安装gcc和mpich，若还需要使用mpi性能测试工具Trace Analyzer，
+则需要安装oneAPI，oneAPI里面包含mpi的运行环境。
+windows下相关命令：假设源文件为my.c文件
+只运行
+编译：mpicxx -o my my.c
+运行：mpiexec -n 4 my
+
+进行性能测试
+启动相关服务："C:\Program Files (x86)\Intel\oneAPI\setvars.bat"
+编译：mpicxx -o my my.c -trace
+生成stf文件：mpiexec -n 4 my -trace
+用trace打开stf文件：traceanalyzer my.stf

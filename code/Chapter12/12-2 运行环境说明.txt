@@ -1,0 +1,7 @@
+编译命令：
+mpicc 12-2.c -lm -fopenmp -mavx2 -mfma -o 12-2
+执行命令：
+mpirun -np 4 ./12-2
+其他说明：
+1、-np后的数字用于指定进程数目；
+2、程序需要mympi.h与处于同一目录下。

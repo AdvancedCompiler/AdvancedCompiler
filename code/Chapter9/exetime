@@ -1,0 +1,24 @@
+#!/bin/bash
+# gcc -I utilities -I linear-algebra/kernels/atax utilities/polybench.c linear-algebra/kernels/atax/atax.c -o atax_base
+# gcc -O3 -I utilities -I linear-algebra/kernels/atax utilities/polybench.c linear-algebra/kernels/atax/atax.c -DPOLYBENCH_TIME -o atax_time
+
+times=0
+time=0
+flag=0
+output_time=$1
+for((i=1;i<=10;i++))
+do
+  time=`./$output_time`
+  echo "第$i次：$time"
+  #if [ $time -gt 1500  ] ; then
+  times=$(echo "$time+$times"|bc)
+ # echo "第$i次：$time"
+  #let flag+=1
+  #else
+  #echo "第$i次:数据异常"
+  #fi
+done
+average=$(echo "$times*0.1"|bc) #/$flag0.002
+echo "    "
+echo "$filename执行: $flag次总运行时间：$times" 
+echo "$filename执行: $flag平均运行时间：$average" 

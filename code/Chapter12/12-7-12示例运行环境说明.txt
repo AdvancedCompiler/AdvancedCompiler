@@ -1,0 +1,13 @@
+该节所有代码均需要在无锡太湖之光超级计算机系统下运行。
+编译命令：
+mpicc -host -c master.c
+sw5cc -slave -c slave.c
+mpicc -hybrid master.o slave.o -o matrix
+
+作业提交（执行可执行文件）命令：
+bsub -n 1 -cgsp 64 -q q_sw_expr  -I  [可执行文件名]
+注：
+-n 为指定运行主核数目（进程数）
+-cgsp 为运行所需的从核数目（线程数）
+-q 指定运行该程序的队列名
+-I 交互式提交方式

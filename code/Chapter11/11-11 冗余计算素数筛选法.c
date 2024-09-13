@@ -1,0 +1,94 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+#include<time.h>
+#include<string.h>
+#include<mpi.h>
+#define MAX_PRIME 100000001
+int main(int argc,char **argv){
+    int shift,volume,left;
+    int index,i,j,last_index,gen_prime_len;
+    double start,end;
+    char *prime,*gen_prime;
+    int my_rank,world_size;
+    MPI_Init(&argc,&argv);
+    MPI_Comm_rank(MPI_COMM_WORLD,&my_rank);
+    MPI_Comm_size(MPI_COMM_WORLD,&world_size);
+    //计算偏移量等信息
+    left=MAX_PRIME%world_size;
+    if(my_rank<left){
+        volume=MAX_PRIME/world_size+1;
+        shift=my_rank*volume;
+    }else{
+        volume=MAX_PRIME/world_size;
+        shift=left*(volume+1)+(my_rank-left)*volume;
+    }
+    if(my_rank==0){
+        if(volume<sqrt(MAX_PRIME)){
+            printf("进程数太多，素数上限太小\n");
+            //终止MPI_COMM_WORLD下所有进程运行
+            MPI_Abort(MPI_COMM_WORLD,0);
+        }
+    }
+    //去除2的倍数
+    prime=malloc(sizeof(char)*volume);
+    for(i=shift;i<shift+volume;i++){
+        if(i%2==0){
+            prime[i-shift]='n';
+        }else{
+            prime[i-shift]='y';
+        }
+    }
+    if(my_rank==0){
+        prime[0]=prime[1]='n';
+        prime[2]='y';
+    }
+    //gen_prime_len是完成MAX_PRIME范围的素数筛选所需要使用到的最大的未被标记数
+    //自己产生素数,将素数信息放置到gen_prime中
+    start=MPI_Wtime();
+    gen_prime_len=sqrt(MAX_PRIME)+1;
+    gen_prime=malloc(sizeof(char)*gen_prime_len);
+    memset(gen_prime,'y',gen_prime_len);
+    gen_prime[0]=gen_prime[1]='n';
+    last_index=-1;
+    index=2;
+    //在[2,gen_prime_len]范围内筛选素数
+    while(index!=last_index){
+        for(i=index*2;i<=gen_prime_len;i+=index){
+            gen_prime[i]='n';
+        }
+        last_index=index;
+        for(i=index+1;i<=gen_prime_len;i++){
+            if(gen_prime[i]=='y'){
+                index=i;
+                break;
+            }
+        }
+    }
+    //使用gen_prime中的素数信息标记prime列表
+    //由于已对所有的偶数进行标记，因此直接从3开始标记即可
+    for(i=3;i<gen_prime_len;i++){
+        if(gen_prime[i]=='y'){
+            index=i;
+            //定位到开始执行筛选的位置
+            if(my_rank==0){
+                j=index*2;
+            }else{
+                j=0;
+                if(shift%index!=0){
+                    j+=index-shift%index;
+                }
+            }
+            //将index的倍数标记为非素数
+            for(;j+shift<volume+shift;j+=index){
+                prime[j]='n';
+            }
+        }
+    }
+    end=MPI_Wtime();
+    printf("进程%d的运行时间为:%lf\n",my_rank,(end-start));
+    free(prime);
+    free(gen_prime);
+    MPI_Finalize();
+    return 0;
+}
