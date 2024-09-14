@@ -55,4 +55,15 @@
 |8 循环分裂|[<img src="/img/bilibili.svg" alt="B站" width="20" height="20">bilibili](https://www.bilibili.com/video/BV1mb411f7wK)|[<img src="/img/PPT.svg" alt="slide" width="20" height="20">slide](slides/8循环分裂.pptx)     [<img src="/img/pdf.svg" alt="pdf" width="20" height="20">PDF](slides/8循环分裂.pdf)[<img src="/img/zhihu.svg" alt="zhihu" width="20" height="20">知乎](https://zhuanlan.zhihu.com/p/612902532)|
 |9 循环倾斜|[<img src="/img/bilibili.svg" alt="B站" width="20" height="20">bilibili](https://www.bilibili.com/video/BV1uV4y1f7cJ)|[<img src="/img/PPT.svg" alt="slide" width="20" height="20">slide](slides/9循环倾斜.pptx)     [<img src="/img/pdf.svg" alt="pdf" width="20" height="20">PDF](slides/9循环倾斜.pdf)[<img src="/img/zhihu.svg" alt="zhihu" width="20" height="20">知乎](https://zhuanlan.zhihu.com/p/622604808)|
 
+
+# 深度学习编译器设计
+深度学习编译是一个博大精深且正在快速发展的领域，下面内容旨在分享先进编译实验室团队在学习深度学习编译领域过程中的对顶会论文、主流编译器等的学习心得。
+
+## 分享目录
+||||
+|---|---|---|
+|内容板块|分享视频|课件文章|
+|1 深度学习概述|[<img src="/img/bilibili.svg" alt="B站" width="20" height="20">深度学习的产生与发展](https://www.bilibili.com/video/BV1AM411P7JG/)<br>[<img src="/img/bilibili.svg" alt="B站" width="20" height="20">深度神经网络的结构](https://www.bilibili.com/video/BV1bD4y1G7oV/)<br>[<img src="/img/bilibili.svg" alt="B站" width="20" height="20">神经网络的运行机制](https://www.bilibili.com/video/BV1xs4y1b7nt/)<br>[<img src="/img/bilibili.svg" alt="B站" width="20" height="20">CNN-卷积神经网络（一）](https://www.bilibili.com/video/BV1iL411o7iz/)<br>[<img src="/img/bilibili.svg" alt="B站" width="20" height="20">CNN-卷积神经网络（二）](https://www.bilibili.com/video/BV1bL411o74W/)|[<img src="/img/pdf.svg" alt="pdf" width="20" height="20">PDF](slides/2-1深度学习概述.pdf)|
+
+
 <img src="/img/bottom_logo.png" alt="weixin_logo">
