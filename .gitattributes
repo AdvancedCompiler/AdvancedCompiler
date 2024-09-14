@@ -1,0 +1,4 @@
+code/Chapter4/4.5.1配置检查（1）.mp4 filter=lfs diff=lfs merge=lfs -text
+code/Chapter3/3.3.3vtune.mp4 filter=lfs diff=lfs merge=lfs -text
+code/Chapter3/3.3.3nvprof.mp4 filter=lfs diff=lfs merge=lfs -text
+code/Chapter3/3.3.3advisor-gui.mp4 filter=lfs diff=lfs merge=lfs -text
