@@ -1,0 +1,294 @@
+<!DOCTYPE html>  
+<html lang="zh">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>表格示例</title>  
+    <style>  
+        table {  
+            border-collapse: collapse; /* 合并边框 */  
+            width: 100%; /* 表格宽度 */  
+        }  
+        th, td {  
+            border: 1px solid black; /* 设置边框样式 */  
+            padding: 8px; /* 添加内边距 */  
+            text-align: left; /* 文本左对齐 */  
+        }  
+        th {  
+            background-color: #f2f2f2; /* 表头背景色 */  
+        }  
+    </style>  
+</head>  
+<body>
+
+<h1>程序性能优化理论与方法 &amp; 深度学习编译器设计</h1>
+<p>先进编译实验室编著的《程序性能优化理论与方法》（实操课程）以及《深度学习编译器设计》两本书籍所配套的文字课程、PPT课件以及配套code将陆续进行更新……同时也欢迎大家关注先进编译实验室的B站账号、知乎，添加微信小助手，加入交流群进行讨论学习，共同进步！！！</p>
+<p><a href="https://space.bilibili.com/1540261574/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili个人主页</a>
+<a href="https://www.zhihu.com/people/33-31-35-97"><img src="img/zhihu.svg" alt="知乎" width="20" height="20">知乎个人主页</a>
+<a href="img/weixin_logo.png"><img src="img/weixin.svg" alt="B站" width="20" height="20">微信名片</a></p>
+<p>先进编译实验室团队长期致力于高性能计算、编译技术、程序优化等方向的科研工作。先后承研国家重大专项、核高基专项、973、863、自然科学基金等相关课题，在高性能计算、并行程序设计与优化、国产自主可控等相关领域已经形成了若干领先成果，曾获国家科技进步一等奖、省部级科技进步一等奖等奖项。在国内外超算及程序优化的竞赛中，多次获PAC全国并行应用挑战赛优化金奖、银奖、铜奖，ASC世界大学生超级计算机竞赛一等奖、二等奖、卓越奖，CPC国产并行应用挑战赛银奖、铜奖，IPCC-ACM中国国际并行计算挑战赛二等奖等。</p>
+<h1>程序性能优化理论与方法</h1>
+<p>本书及课程从计算机体系结构、编译系统、操作系统、作业管理等多角度，对程序实现中的算法、数据结构、程序设计语言特性、资源占用及程序运行过程等多维度，全面探讨程序性能优化的理论和方法。
+本书适用于具备一定程序设计基础并致力于程序性能优化的程序设计人员，也可以作为高等教育计算机程序设计的学习使用，还可作为从事性能优化专业技术人员的参考书。</p>
+<img src="img/book_logo.png" alt="weixin_logo">
+<h2>章节目录</h2>
+<table>
+<thead>
+<tr>
+<th>章节名称</th>
+<th>视频课程</th>
+<th>实操课程</th>
+<th>课件源码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 程序性能优化的意义</td>
+<td><a href="https://www.bilibili.com/read/cv25998686/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">程序性能优化的意义(一)</a>     <a href="https://www.bilibili.com/video/BV1LL411B7uW"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a>     <br><a href="https://www.bilibili.com/read/cv26044608/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">程序性能优化的意义(二)</a>     <a href="https://www.bilibili.com/video/BV15g4y1F7QQ"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a></td>
+<td></td>
+<td><a href="slides/Chapter1.pptx"><img src="img/PPT.svg" alt="slide" width="20" height="20">slide</a>     <a href="slides/Chapter1.pdf"><img src="img/pdf.svg" alt="pdf" width="20" height="20">PDF</a></td>
+</tr>
+<tr>
+<td>2 程序性能的度量指标及优化流程</td>
+<td><a href="https://www.bilibili.com/read/cv26110227/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">程序性能的度量指标及优化流程</a>     <a href="https://www.bilibili.com/video/BV1vu411s7Xw"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a></td>
+<td></td>
+<td><a href="slides/Chapter2.pptx"><img src="img/PPT.svg" alt="slide" width="20" height="20">slide</a>     <a href="slides/Chapter2.pdf"><img src="img/pdf.svg" alt="pdf" width="20" height="20">PDF</a> <a href="code/Chapter2/"><img src="img/code.svg" alt="code" width="20" height="20">code</a></td>
+</tr>
+<tr>
+<td>3 程序性能的分析和测量</td>
+<td><a href="https://www.bilibili.com/read/cv26284969/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">程序性能的分析和测量(一)</a>     <a href="https://www.bilibili.com/video/BV1ZV4y1U7wr"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a>     <br><a href="https://www.bilibili.com/read/cv26339611/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">程序性能的分析和测量(二)</a>     <a href="https://www.bilibili.com/video/BV11k4y1p7Bw"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a>     <br><a href="https://www.bilibili.com/read/cv26440606/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">程序性能的分析和测量(三)</a>     <a href="https://www.bilibili.com/video/BV1Wm4y1v7yZ"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a></td>
+<td></td>
+<td><a href="slides/Chapter3.pptx"><img src="img/PPT.svg" alt="slide" width="20" height="20">slide</a>     <a href="slides/Chapter3.pdf"><img src="img/pdf.svg" alt="pdf" width="20" height="20">PDF</a> <a href="code/Chapter3/"><img src="img/code.svg" alt="code" width="20" height="20">code</a></td>
+</tr>
+<tr>
+<td>4 系统配置优化</td>
+<td><a href="https://www.bilibili.com/read/cv26465284/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">系统配置优化(一)</a>     <a href="https://www.bilibili.com/video/BV1go4y1K72Y"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a>     <br><a href="https://www.bilibili.com/read/cv26465434/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">系统配置优化(二)</a>     <a href="https://www.bilibili.com/video/BV12o4y1P7kW"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a>     <br></td>
+<td></td>
+<td><a href="slides/Chapter4.pptx"><img src="img/PPT.svg" alt="slide" width="20" height="20">slide</a>     <a href="slides/Chapter4.pdf"><img src="img/pdf.svg" alt="pdf" width="20" height="20">PDF</a> <a href="code/Chapter4/"><img src="img/code.svg" alt="code" width="20" height="20">code</a></td>
+</tr>
+<tr>
+<td>5 编译与运行优化</td>
+<td><a href="https://www.bilibili.com/read/cv26593897/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">编译与运行优化(一)</a>     <a href="https://www.bilibili.com/video/BV1KN4y1L7XT"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a>     <br><a href="https://www.bilibili.com/read/cv26902172/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">编译与运行优化(二)</a>     <a href="https://www.bilibili.com/video/BV1KN4y1L7XT"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a>     <br><a href="https://www.bilibili.com/read/cv26728595/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">编译与运行优化(三)</a>     <a href="https://www.bilibili.com/video/BV1KN4y1L7XT"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a>     <br></td>
+<td><a href="https://www.bilibili.com/read/cv33246459/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">编译器前端</a>     <a href="https://www.bilibili.com/video/BV1NC411Y7A8"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href="https://www.bilibili.com/read/cv33260788/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">编译器中端</a>     <a href="https://www.bilibili.com/video/BV1Xr421H7t3"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href="https://www.bilibili.com/read/cv33311872/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">编译器后端</a>     <a href="https://www.bilibili.com/video/BV1gi421d7Hc"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href="https://www.bilibili.com/read/cv33367074/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">编译选项</a>     <a href="https://www.bilibili.com/video/BV1Nr421n7Pd"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href="https://www.bilibili.com/read/cv33543228/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">循环展开</a>     <a href="https://www.bilibili.com/video/BV13f421f7ip"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href="https://www.bilibili.com/read/cv33612582/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">循环分布</a>     <a href="https://www.bilibili.com/video/BV1pj421d793"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><a href="https://zhuanlan.zhihu.com/p/690497025"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a><br><a href="https://www.bilibili.com/read/cv33666036/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">循环剥离</a>     <a href="https://www.bilibili.com/video/BV1AD421W7A1"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><a href="https://zhuanlan.zhihu.com/p/691358792"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a><br><a href="https://www.bilibili.com/read/cv33477201/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">过程间优化</a>     <a href="https://www.bilibili.com/video/BV15m411d7gH"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href="https://www.bilibili.com/read/cv33760861/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">循环级向量化</a>     <a href="https://www.bilibili.com/video/BV19M4m1X7PU"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><a href="https://zhuanlan.zhihu.com/p/692201250"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a><br><a href="https://www.bilibili.com/read/cv33867227/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">基本块级向量化</a>     <a href="https://www.bilibili.com/video/BV1wp421y7k2"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><a href="https://zhuanlan.zhihu.com/p/693050648"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a><br><a href="https://www.bilibili.com/read/cv33889311/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">数据预取优化</a>     <a href="https://www.bilibili.com/video/BV1Dz421k72n"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><a href="https://zhuanlan.zhihu.com/p/693262484"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a><br><a href="https://www.bilibili.com/read/cv34001479/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">浮点优化</a>     <a href="https://www.bilibili.com/video/BV1BZ421e7t6"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href="https://www.bilibili.com/read/cv34126648/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">反馈优化</a>     <a href="https://www.bilibili.com/video/BV1xx421S74X"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><a href="https://zhuanlan.zhihu.com/p/694742133"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a><br><a href="https://www.bilibili.com/read/cv34218862/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">链接时优化</a>     <a href="https://www.bilibili.com/video/BV1ZD421p7Gy"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><a href="https://zhuanlan.zhihu.com/p/695380833"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a><br><a href="https://www.bilibili.com/read/cv34219036/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">编译指示</a>     <a href="https://www.bilibili.com/video/BV1jZ421v791"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><a href="https://zhuanlan.zhihu.com/p/695382596"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a><br><a href="https://www.bilibili.com/read/cv34325212/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">数学库优化</a>     <a href="https://www.bilibili.com/video/BV12D421p79o"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><a href="https://zhuanlan.zhihu.com/p/695468331"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a><br><a href="https://www.bilibili.com/read/cv34372946/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">运行时优化</a>     <a href="https://www.bilibili.com/video/BV1ax4y167hV"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><a href="https://zhuanlan.zhihu.com/p/696635381"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a></td>
+<td><a href="slides/Chapter5.pptx"><img src="img/PPT.svg" alt="slide" width="20" height="20">slide</a>     <a href="slides/Chapter5.pdf"><img src="img/pdf.svg" alt="pdf" width="20" height="20">PDF</a> <a href="code/Chapter5/"><img src="img/code.svg" alt="code" width="20" height="20">code</a></td>
+</tr>
+<tr>
+<td>6 程序编写优化</td>
+<td><a href="https://www.bilibili.com/read/cv26728808/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">程序编写优化(一)</a>     <a href="https://www.bilibili.com/video/BV1gX4y1q7Ms"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a>     <br><a href="https://www.bilibili.com/read/cv26902172/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">程序编写优化(二)</a>     <a href="https://www.bilibili.com/video/BV1Aj411S7kJ"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a>     <br><a href="https://www.bilibili.com/read/cv26937568/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">程序编写优化(三)</a>     <a href="https://www.bilibili.com/video/BV1sg4y1N763"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a>     <br><a href="https://www.bilibili.com/read/cv27020337/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">程序编写优化(四)</a>     <a href="https://www.bilibili.com/video/BV1rh411A79q"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a>     <br><a href="https://www.bilibili.com/read/cv27090785/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">程序编写优化(五)</a>     <a href="https://www.bilibili.com/video/BV1mz4y1E7rb"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a>     <br></td>
+<td><a href="https://www.bilibili.com/read/cv34416011/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">算法优化</a>     <a href="https://www.bilibili.com/video/BV1C142197zL"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><a href="https://zhuanlan.zhihu.com/p/697039107"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a><br><a href="https://www.bilibili.com/read/cv34506282/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">典型数据结构的性能分析</a>     <a href="https://www.bilibili.com/video/BV1ew4m127sJ"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><a href="https://zhuanlan.zhihu.com/p/697747139"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a><br><a href="https://www.bilibili.com/read/cv34673418/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">选择合适的数据类型</a>     <a href="https://www.bilibili.com/video/BV11t421c7N1"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><a href="https://zhuanlan.zhihu.com/p/698185460"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a><br><a href="https://www.bilibili.com/read/cv34704402/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">选择合适的数据结构</a>     <a href="https://www.bilibili.com/video/BV1vi421C7mB"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><a href="https://zhuanlan.zhihu.com/p/699074220"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a><br><a href="https://www.bilibili.com/read/cv34838624/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">别名消除</a>     <a href="https://www.bilibili.com/video/BV1tx4y1B75k"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><a href="https://zhuanlan.zhihu.com/p/700160135"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a><br><a href="https://www.bilibili.com/read/cv34933167/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">常数传播</a>     <a href="https://www.bilibili.com/video/BV1Cw4m1C7t3"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><a href="https://zhuanlan.zhihu.com/p/700774860"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a><br><a href="https://www.bilibili.com/read/cv35032486/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">传参优化</a>     <a href="https://www.bilibili.com/video/BV1NM4m1o7oH"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><a href="https://zhuanlan.zhihu.com/p/701450224"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a><br><a href="https://www.bilibili.com/read/cv35096886/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">内联优化</a>     <a href="https://www.bilibili.com/video/BV1CC411j7Zz"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href="https://www.bilibili.com/read/cv37323940/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">过程克隆</a>     <a href="https://www.bilibili.com/video/BV17y411Y7Wo"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><a href="https://zhuanlan.zhihu.com/p/715444386"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a><br><a href="https://www.bilibili.com/read/cv37380397/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">全局变量优化</a>     <a href="https://www.bilibili.com/video/BV1vf421m7RY"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href="https://www.bilibili.com/read/cv37729212/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">循环展开和压紧</a>     <a href="https://www.bilibili.com/video/BV1mx4y1H7ch"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">循环不变量外提</a>     <a href="https://www.bilibili.com/video/BV1nw4m1D7np/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">循环合并</a>     <a href="https://www.bilibili.com/video/BV1k7421f77W/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">循环分段</a>     <a href="https://www.bilibili.com/video/BV18z421Y7eR/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">循环分块</a>     <a href="https://www.bilibili.com/video/BV1sJ4m137o2/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">循环交换</a>     <a href="https://www.bilibili.com/video/BV1zx4y1n7fe/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">循环分裂</a>     <a href="https://www.bilibili.com/video/BV1Et421N7E5/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">循环倾斜</a>     <a href="https://www.bilibili.com/video/BV1Et421N7E5/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">循环分布</a>     <a href="https://www.bilibili.com/video/BV16S411K7Zv/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">删除冗余语句</a>     <a href="https://www.bilibili.com/video/BV1Bx4y1J7Uq/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">代数变换</a>     <a href="https://www.bilibili.com/video/BV1G7421d7FB/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">公共子表达式优化</a>     <a href="https://www.bilibili.com/video/BV1Nr421w7DW/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">合并判断条件</a>     <a href="https://www.bilibili.com/video/BV1n4421Q7H8/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">生成选择指令</a>     <a href="https://www.bilibili.com/video/BV1px4y1J7mR/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">分支语句优化之运用条件编译</a>     <a href="https://www.bilibili.com/video/BV18Z421T7Tx/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">分支语句优化之移除分支语句</a>     <a href="https://www.bilibili.com/video/BV1Bb421E7yE/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a></td>
+<td><a href="slides/Chapter6.pptx"><img src="img/PPT.svg" alt="slide" width="20" height="20">slide</a>     <a href="slides/Chapter6.pdf"><img src="img/pdf.svg" alt="pdf" width="20" height="20">PDF</a> <a href="code/Chapter6/"><img src="img/code.svg" alt="code" width="20" height="20">code</a></td>
+</tr>
+<tr>
+<td>7 单核优化</td>
+<td><a href="https://www.bilibili.com/read/cv27182155/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">指令级并行(一)</a>     <a href="https://www.bilibili.com/video/BV1iV4y1h7wm"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a>     <br><a href="https://www.bilibili.com/read/cv27239182/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">指令级并行(二)</a>     <a href="https://www.bilibili.com/video/BV1ym4y1E783"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a>     <br><a href="https://www.bilibili.com/read/cv27244340/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">数据级并行(一)</a>     <a href="https://www.bilibili.com/video/BV1M94y1q7B4"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a>     <br><a href="https://www.bilibili.com/read/cv27319972/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">数据级并行(二)</a>     <a href="https://www.bilibili.com/video/BV1Wj411R74A"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a>     <br><a href="https://www.bilibili.com/read/cv27410580/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">数据级并行(三)</a>     <a href="https://www.bilibili.com/video/BV1Kk4y1G77z"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a></td>
+<td><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">指令流水</a>     <a href="https://www.bilibili.com/video/BV1dx4y147fD/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">超长指令字</a>     <a href="https://www.bilibili.com/video/BV1Nf421z7Yy/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">函数的向量化</a>     <a href="https://www.bilibili.com/video/BV1Uw4m1e7PE/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">基本块的向量化</a>     <a href="https://www.bilibili.com/video/BV1A4421X7ov/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">循环的向量化</a>     <a href="https://www.bilibili.com/video/BV1gZ421M7UP/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">分支向量化</a>     <a href="https://www.bilibili.com/video/BV1ES421R7BC/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">归约向量化</a>     <a href="https://www.bilibili.com/video/BV1Q4421U7UR/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">不对齐访存</a>     <a href="https://www.bilibili.com/video/BV1cZ421u7oX/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">不连续访存</a>     <a href="https://www.bilibili.com/video/BV1yS411c7nC/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">向量重用</a>     <a href="https://www.bilibili.com/video/BV1Pw4m1Y7nH/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">向量运算融合</a>     <a href="https://www.bilibili.com/video/BV1gy411i7cL/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">循环完全展开</a>     <a href="https://www.bilibili.com/video/BV12H4y1w7cK/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a></td>
+<td><a href="slides/Chapter7.pptx"><img src="img/PPT.svg" alt="slide" width="20" height="20">slide</a>     <a href="slides/Chapter7.pdf"><img src="img/pdf.svg" alt="pdf" width="20" height="20">PDF</a> <a href="code/Chapter7/"><img src="img/code.svg" alt="code" width="20" height="20">code</a></td>
+</tr>
+<tr>
+<td>8 访存优化</td>
+<td><a href="https://www.bilibili.com/read/cv27540566/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">访存优化(一)</a>     <a href="https://www.bilibili.com/video/BV1yz4y1s7qp"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a>     <br><a href="https://www.bilibili.com/read/cv27540566/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">访存优化(二)</a>     <a href="https://www.bilibili.com/video/BV1fM4y1H7Ba"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a>     <br><a href="https://www.bilibili.com/read/cv27610451/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">访存优化(三)</a>     <a href="https://www.bilibili.com/video/BV18m4y1W7fH"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a>     <br><a href="https://www.bilibili.com/read/cv27666011/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">访存优化(四)</a>     <a href="https://www.bilibili.com/video/BV1Np4y1776Z"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a>     <br><a href="https://www.bilibili.com/read/cv27759411/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">访存优化(五)</a>     <a href="https://www.bilibili.com/video/BV1gw411D7Bw"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a>     <br><a href="https://www.bilibili.com/read/cv27917259/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">访存优化(六)</a>     <a href="https://www.bilibili.com/video/BV1cp4y1j7ga"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a>     <br></td>
+<td><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">寄存器分配</a>     <a href="https://www.bilibili.com/video/BV1kr421M7mc/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">寄存器重用</a>     <a href="https://www.bilibili.com/video/BV1p142187Vu/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">缓存分块</a>     <a href="https://www.bilibili.com/video/BV1o4421Z7Ld/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">减少伪共享</a>     <a href="https://www.bilibili.com/video/BV1cZ421K7fz/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">数据预取</a>     <a href="https://www.bilibili.com/video/BV1Jb421J7Fx/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">减少内存读写</a>     <a href="https://www.bilibili.com/video/BV1amW8edE7Q/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">数据对齐</a>     <a href="https://www.bilibili.com/video/BV1KCste1EQN/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">多线程操作</a>     <a href="https://www.bilibili.com/video/BV1TksteLErP/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">数组重组</a>     <a href="https://www.bilibili.com/video/BV1TksteLErM/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">数组转置</a>     <a href="https://www.bilibili.com/video/BV18BHaeXECN/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">结构属性域调整</a>     <a href="https://www.bilibili.com/video/BV1hqHaeWETX/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">结构体拆分</a>     <a href="https://www.bilibili.com/video/BV18qHaeWEkd/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">结构体数组转换</a>     <a href="https://www.bilibili.com/video/BV1wG4henEyc/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a></td>
+<td><a href="slides/Chapter8.pptx"><img src="img/PPT.svg" alt="slide" width="20" height="20">slide</a>     <a href="slides/Chapter8.pdf"><img src="img/pdf.svg" alt="pdf" width="20" height="20">PDF</a> <a href="code/Chapter8/"><img src="img/code.svg" alt="code" width="20" height="20">code</a></td>
+</tr>
+<tr>
+<td>9 OpenMP程序优化</td>
+<td><a href="https://www.bilibili.com/read/cv27917453/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">OpenMP编程简介</a>     <a href="https://www.bilibili.com/video/BV1Zw411U7a8"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a>     <br><a href="https://www.bilibili.com/read/cv28098570/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">并行区重构</a>     <a href="https://www.bilibili.com/video/BV1eu411A79T"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a>     <br><a href="https://www.bilibili.com/read/cv28275663/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">向量化指导命令</a>     <a href="https://www.bilibili.com/video/BV12h4y1Y7vH"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a>     <br><a href="https://www.bilibili.com/read/cv28352985/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">避免伪共享</a>     <a href="https://www.bilibili.com/video/BV1Gw411i7rS"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a>     <br><a href="https://www.bilibili.com/read/cv28353034/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">负载均衡优化</a>     <a href="https://www.bilibili.com/video/BV1XN4y1o7NQ"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a>     <br><a href="https://www.bilibili.com/read/cv28464268/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">避免隐式同步</a>     <a href="https://www.bilibili.com/video/BV19u4y1x7CS"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a>     <br><a href="https://www.bilibili.com/read/cv28623151/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">流水并行优化</a>     <a href="https://www.bilibili.com/video/BV1LB4y1Z74v"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a>     <br></td>
+<td><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">OpenMP程序编写</a>     <a href="https://www.bilibili.com/video/BV19ntJeMEpD/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">OpenMP版矩阵乘</a>     <a href="https://www.bilibili.com/video/BV1hstJeeEpc/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">并行区扩张</a>     <a href="https://www.bilibili.com/video/BV1its8eYEQh/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">并行区合并</a>     <a href="https://www.bilibili.com/video/BV1qts8eYEiH/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a><br><a href=""><img src="img/text.svg" alt="专栏文章" width="20" height="20">数据填充避免伪共享</a>     <a href="https://www.bilibili.com/video/BV1Z4s8eAEp9/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a></td>
+<td><a href="slides/Chapter9.pptx"><img src="img/PPT.svg" alt="slide" width="20" height="20">slide</a>     <a href="slides/Chapter9.pdf"><img src="img/pdf.svg" alt="pdf" width="20" height="20">PDF</a> <a href="code/Chapter9/"><img src="img/code.svg" alt="code" width="20" height="20">code</a></td>
+</tr>
+<tr>
+<td>10 CUDA程序优化</td>
+<td><a href="https://www.bilibili.com/read/cv28626902/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">CUDA程序优化(一)</a>     <a href="https://www.bilibili.com/video/BV1pB4y1f7Md"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a>     <br><a href="https://www.bilibili.com/read/cv28755607/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">CUDA程序优化(二)</a>     <a href="https://www.bilibili.com/video/BV1C94y187iq"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a>     <br><a href="https://www.bilibili.com/read/cv28755625/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">CUDA程序优化(三)</a>     <a href="https://www.bilibili.com/video/BV1Kw411z7Wd"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a>     <br><a href="https://www.bilibili.com/read/cv28815789/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">CUDA程序优化(四)</a>     <a href="https://www.bilibili.com/video/BV1G84y1R7Ak"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a>     <br></td>
+<td></td>
+<td><a href="slides/Chapter10.pptx"><img src="img/PPT.svg" alt="slide" width="20" height="20">slide</a>     <a href="slides/Chapter10.pdf"><img src="img/pdf.svg" alt="pdf" width="20" height="20">PDF</a> <a href="code/Chapter10/"><img src="img/code.svg" alt="code" width="20" height="20">code</a></td>
+</tr>
+<tr>
+<td>11 MPI程序优化</td>
+<td><a href="https://www.bilibili.com/read/cv29026871/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">MPI程序简介(一)</a>     <a href="https://www.bilibili.com/video/BV1cj411a7Sb"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a>     <br><a href="https://www.bilibili.com/read/cv29589746/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">MPI程序简介(二)</a>     <a href="https://www.bilibili.com/video/BV1ra4y1m7JP"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a>     <br><a href="https://www.bilibili.com/read/cv30127910/"><img src="img/text.svg" alt="专栏文章" width="20" height="20">数据划分优化</a>     <a href="https://www.bilibili.com/video/BV1Lc411b7Fw"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a>     <br></td>
+<td></td>
+<td><a href="slides/Chapter12.pptx"><img src="img/PPT.svg" alt="slide" width="20" height="20">slide</a>     <a href="slides/Chapter12.pdf"><img src="img/pdf.svg" alt="pdf" width="20" height="20">PDF</a> <a href="code/Chapter11/"><img src="img/code.svg" alt="code" width="20" height="20">code</a></td>
+</tr>
+<tr>
+<td>12 多层次并行程序优化</td>
+<td></td>
+<td></td>
+<td><a href="code/Chapter12/"><img src="img/code.svg" alt="code" width="20" height="20">code</a></td>
+</tr>
+</table>
+
+
+<h2>附录</h2>
+
+<h3>LLVM编译器入门</h3>
+<table>
+<thead>
+<tr>
+<th>章节名称</th>
+<th>视频课程</th>
+<th>PPT</th>
+</tr>
+</thead>
+<tr>
+<td>1 LLVM整体设计</td>
+<td><a href="https://www.bilibili.com/video/BV18j411B7TF"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a></td>
+<td><a href="https://zhuanlan.zhihu.com/p/689182997"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a></td>
+</tr>
+<tr>
+<td>2 Clang前端</td>
+<td><a href="https://www.bilibili.com/video/BV11j411B7XZ"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a></td>
+<td><a href="https://zhuanlan.zhihu.com/p/689603871"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a></td>
+</tr>
+<tr>
+<td>3 IR优化</td>
+<td><a href="https://www.bilibili.com/video/BV1fX4y1x79Y"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a></td>
+<td></td>
+</tr>
+<tr>
+<td>4 代码生成（上）</td>
+<td><a href="https://www.bilibili.com/video/BV1tN411B71r"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a></td>
+<td></td>
+</tr>
+<tr>
+<td>5 代码生成（下）</td>
+<td><a href="https://www.bilibili.com/video/BV1YG411o7AQ"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a></td>
+<td></td>
+</tr>
+
+</table>
+<h3>循环优化专题</h3>
+<table>
+<thead>
+<tr>
+<th>章节名称</th>
+<th>视频课程</th>
+<th>课件文章</th>
+</tr>
+</thead>
+<tr>
+<td>1 循环展开和压紧</td>
+<td><a href="https://www.bilibili.com/video/BV1HB4y1x7zv"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a></td>
+<td><a href="slides/1循环展开.pptx"><img src="img/PPT.svg" alt="slide" width="20" height="20">slide</a>     <a href="slides/1循环展开.pdf"><img src="img/pdf.svg" alt="pdf" width="20" height="20">PDF</a><a href="https://zhuanlan.zhihu.com/p/720113750"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a></td>
+</tr>
+<tr>
+<td>2 循环合并</td>
+<td><a href="https://www.bilibili.com/video/BV1CD4y1B7H2"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a></td>
+<td><a href="slides/2循环合并.pptx"><img src="img/PPT.svg" alt="slide" width="20" height="20">slide</a>     <a href="slides/2循环合并.pdf"><img src="img/pdf.svg" alt="pdf" width="20" height="20">PDF</a><a href="https://zhuanlan.zhihu.com/p/720117194"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a></td>
+
+</tr>
+<tr>
+<td>3 循环分布</td>
+<td><a href="https://www.bilibili.com/video/BV1Z8411t7dC"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a></td>
+<td><a href="slides/3循环分布.pptx"><img src="img/PPT.svg" alt="slide" width="20" height="20">slide</a>     <a href="slides/3循环分布.pdf"><img src="img/pdf.svg" alt="pdf" width="20" height="20">PDF</a><a href="https://zhuanlan.zhihu.com/p/568326883"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a></td>
+
+</tr>
+<tr>
+<td>4 循环交换</td>
+<td><a href="https://www.bilibili.com/video/BV13d4y1C7ca"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a></td>
+<td><a href="slides/4循环交换.pptx"><img src="img/PPT.svg" alt="slide" width="20" height="20">slide</a>     <a href="slides/4循环交换.pdf"><img src="img/pdf.svg" alt="pdf" width="20" height="20">PDF</a><a href="https://zhuanlan.zhihu.com/p/603088713"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a></td>
+
+</tr>
+<tr>
+<td>5 循环不变量外提</td>
+<td><a href="https://www.bilibili.com/video/BV1Ud4y1b7Zc"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a></td>
+<td><a href="slides/5循环不变量外提.pptx"><img src="img/PPT.svg" alt="slide" width="20" height="20">slide</a>     <a href="slides/5循环不变量外提.pdf"><img src="img/pdf.svg" alt="pdf" width="20" height="20">PDF</a><a href="https://zhuanlan.zhihu.com/p/720156712"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a></td>
+
+</tr>
+<tr>
+<td>6 循环分段</td>
+<td><a href="https://www.bilibili.com/video/BV1Zs4y1s7zn"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a></td>
+<td><a href="slides/6循环分段.pptx"><img src="img/PPT.svg" alt="slide" width="20" height="20">slide</a>     <a href="slides/6循环分段.pdf"><img src="img/pdf.svg" alt="pdf" width="20" height="20">PDF</a><a href="https://zhuanlan.zhihu.com/p/603106704"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a></td>
+
+</tr>
+<tr>
+<td>7 循环分块</td>
+<td><a href="https://www.bilibili.com/video/BV1gv4y1Y7ed"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a></td>
+<td><a href="slides/7循环分块.pptx"><img src="img/PPT.svg" alt="slide" width="20" height="20">slide</a>     <a href="slides/7循环分块.pdf"><img src="img/pdf.svg" alt="pdf" width="20" height="20">PDF</a><a href="https://zhuanlan.zhihu.com/p/609700144"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a></td>
+
+</tr>
+<tr>
+<td>8 循环分裂</td>
+<td><a href="https://www.bilibili.com/video/BV1mb411f7wK"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a></td>
+<td><a href="slides/8循环分裂.pptx"><img src="img/PPT.svg" alt="slide" width="20" height="20">slide</a>     <a href="slides/8循环分裂.pdf"><img src="img/pdf.svg" alt="pdf" width="20" height="20">PDF</a><a href="https://zhuanlan.zhihu.com/p/612902532"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a></td>
+
+</tr>
+<tr>
+<td>9 循环倾斜</td>
+<td><a href="https://www.bilibili.com/video/BV1uV4y1f7cJ"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a></td>
+<td><a href="slides/9循环倾斜.pptx"><img src="img/PPT.svg" alt="slide" width="20" height="20">slide</a>     <a href="slides/9循环倾斜.pdf"><img src="img/pdf.svg" alt="pdf" width="20" height="20">PDF</a><a href="https://zhuanlan.zhihu.com/p/622604808"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a></td>
+
+</tr>
+</table>
+
+<h3>其他</h3>
+<table>
+<thead>
+<tr>
+<th>章节名称</th>
+<th>视频课程</th>
+<th>课件文章</th>
+</tr>
+</thead>
+<tr>
+<td>HIP代码自动生成工具C2HIPC</td>
+<td><a href="https://www.bilibili.com/video/BV1Jg411Q7z6/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1>深度学习编译器设计</h1>
+<p>深度学习编译是一个博大精深且正在快速发展的领域，下面内容旨在分享先进编译实验室团队在学习深度学习编译领域过程中的对顶会论文、主流编译器等的学习心得。</p>
+<h2>分享目录</h2>
+<table>
+<thead>
+<tr>
+<th>内容板块</th>
+<th>分享视频</th>
+<th>课件文章</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 深度学习概述</td>
+<td><a href="https://www.bilibili.com/video/BV1AM411P7JG/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">深度学习的产生与发展</a><br><a href="https://www.bilibili.com/video/BV1bD4y1G7oV/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">深度神经网络的结构</a><br><a href="https://www.bilibili.com/video/BV1xs4y1b7nt/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">神经网络的运行机制</a><br><a href="https://www.bilibili.com/video/BV1iL411o7iz/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">CNN-卷积神经网络（一）</a><br><a href="https://www.bilibili.com/video/BV1bL411o74W/"><img src="img/bilibili.svg" alt="B站" width="20" height="20">CNN-卷积神经网络（二）</a></td>
+<td><a href="slides/2-1深度学习概述.pdf"><img src="img/pdf.svg" alt="pdf" width="20" height="20">深度学习概述PDF</a><a href="https://zhuanlan.zhihu.com/p/605627284"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">深度学习的产生与发展 知乎</a><a href="https://zhuanlan.zhihu.com/p/608212097"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">深度神经网络的结构 知乎</a><a href="https://zhuanlan.zhihu.com/p/608221436"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">神经网络的运行机制 知乎</a><a href="https://zhuanlan.zhihu.com/p/613894668"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">CNN-卷积神经网络 知乎</a></td>
+</tr>
+<tr>
+<td>2 深度学习编译基础</td>
+<td><a href="https://www.bilibili.com/video/BV1iD4y117td"><img src="img/bilibili.svg" alt="B站" width="20" height="20">深度学习框架发展（一）</a><br><a href="https://www.bilibili.com/video/BV1dt4y1F7Cn"><img src="img/bilibili.svg" alt="B站" width="20" height="20">深度学习框架发展（二）</a><br><a href="https://www.bilibili.com/video/BV1Qe4y1z78o"><img src="img/bilibili.svg" alt="B站" width="20" height="20">深度学习框架发展（三）</a><br><a href="https://www.bilibili.com/video/BV1JY411Q72M"><img src="img/bilibili.svg" alt="B站" width="20" height="20">深度学习硬件平台</a><br><a href="https://www.bilibili.com/video/BV1kS4y1t7JH"><img src="img/bilibili.svg" alt="B站" width="20" height="20">深度学习编译发展概述</a><br><a href="https://www.bilibili.com/video/BV1kS4y1t7JH"><img src="img/bilibili.svg" alt="B站" width="20" height="20">深度学习编译系统概述</a><br><a href="https://www.bilibili.com/video/BV1fs4y197km"><img src="img/bilibili.svg" alt="B站" width="20" height="20">深度学习自动微分</a><br></td>
+<td><a href="slides/2-3深度学习框架发展3.pdf"><img src="img/pdf.svg" alt="pdf" width="20" height="20">深度学习框架发展PDF</a><a href="slides/2-3深度学习框架发展3.pdf"><img src="img/PPT.svg" alt="pdf" width="20" height="20">slides</a><a href="https://zhuanlan.zhihu.com/p/573649638"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a><br><a href="slides/2-4深度学习硬件平台.pdf"><img src="img/pdf.svg" alt="pdf" width="20" height="20">深度学习硬件平台PDF</a><a href="slides/2-4深度学习硬件平台.pptx"><img src="img/PPT.svg" alt="pdf" width="20" height="20">slides</a><a href="https://zhuanlan.zhihu.com/p/601837693"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a><br><a href="https://zhuanlan.zhihu.com/p/573632566"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">深度学习编译发展概述 知乎</a><br><a href="slides/2-6深度学习编译系统.pdf"><img src="img/pdf.svg" alt="pdf" width="20" height="20">深度学习编译系统概述PDF</a><a href="slides/2-6深度学习编译系统.pptx"><img src="img/PPT.svg" alt="pdf" width="20" height="20">slides</a><a href="https://zhuanlan.zhihu.com/p/573626535"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a><br><a href="slides/2-7自动微分.pdf"><img src="img/pdf.svg" alt="pdf" width="20" height="20">深度学习自动微分PDF</a><a href="slides/2-7自动微分.pptx"><img src="img/PPT.svg" alt="pdf" width="20" height="20">slides</a><a href="https://zhuanlan.zhihu.com/p/624451377"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a><br></td>
+</tr>
+<tr>
+<td>3 深度学习编译基础架构MLIR</td>
+<td><a href="https://www.bilibili.com/video/BV1Hd4y1U7mb"><img src="img/bilibili.svg" alt="B站" width="20" height="20">深度学习编译基础架构MLIR</a><br><a href="https://www.bilibili.com/video/BV1ga411N736"><img src="img/bilibili.svg" alt="B站" width="20" height="20">论文分享：基于MLIR的GPU代码生成</a><br></td>
+<td><a href="slides/3-1MLIR_PPT.pdf"><img src="img/pdf.svg" alt="pdf" width="20" height="20">深度学习编译基础架构MLIR PDF</a><a href="slides/3-1MLIR_PPT.pptx"><img src="img/PPT.svg" alt="pdf" width="20" height="20">slides</a><a href="https://zhuanlan.zhihu.com/p/651886385"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a><br></td>
+</tr>
+<tr>
+<td>4 深度学习编译器TVM</td>
+<td><a href="https://www.bilibili.com/video/BV14N4y1c7zq"><img src="img/bilibili.svg" alt="B站" width="20" height="20">TVM概述</a><br><a href="https://www.bilibili.com/video/BV1v3411U7fM"><img src="img/bilibili.svg" alt="B站" width="20" height="20">TVM编译流程与中间表示分析（一）</a><br><a href="https://www.bilibili.com/video/BV1624y1v7wx"><img src="img/bilibili.svg" alt="B站" width="20" height="20">TVM编译流程与中间表示分析（二）</a><br><a href="https://www.bilibili.com/video/BV1114y1e7FK"><img src="img/bilibili.svg" alt="B站" width="20" height="20">TVM自动调度算法AutoTVM</a><br><a href="https://www.bilibili.com/video/BV1m14y1Y7LN"><img src="img/bilibili.svg" alt="B站" width="20" height="20">TVM自动调优工具Ansor</a><br><a href="https://www.bilibili.com/video/BV1ih4y127fX"><img src="img/bilibili.svg" alt="B站" width="20" height="20">Ansor优化算子代码解读（一）</a><br><a href="https://www.bilibili.com/video/BV1C44y1c7WL"><img src="img/bilibili.svg" alt="B站" width="20" height="20">Ansor优化算子代码解读（二）</a><br><a href="https://www.bilibili.com/video/BV1e94y167Qy"><img src="img/bilibili.svg" alt="B站" width="20" height="20">Ansor优化算子代码解读（三）</a><br><a href="https://www.bilibili.com/video/BV1C8411X7BS"><img src="img/bilibili.svg" alt="B站" width="20" height="20">Ansor优化算子代码解读（四）</a><br><a href="https://www.bilibili.com/video/BV1ph4y1U7Dy"><img src="img/bilibili.svg" alt="B站" width="20" height="20">TVM量化框架（一）</a><br><a href="https://www.bilibili.com/video/BV1aN4y1R7MY"><img src="img/bilibili.svg" alt="B站" width="20" height="20">TVM量化框架（二）</a><br><a href="https://www.bilibili.com/video/BV1ur4y197zj"><img src="img/bilibili.svg" alt="B站" width="20" height="20">TVM量化框架（三）</a><br><a href="https://www.bilibili.com/video/BV18w411S7Mh"><img src="img/bilibili.svg" alt="B站" width="20" height="20">TVM量化框架（四）</a></td>
+<td><a href="slides/4-2TVM%20IR流程.pdf"><img src="img/pdf.svg" alt="pdf" width="20" height="20">TVM编译流程与中间表示分析PDF</a><a href="slides/4-2TVM%20IR流程.pptx"><img src="img/PPT.svg" alt="pdf" width="20" height="20">slides</a><a href="https://zhuanlan.zhihu.com/p/596526031"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a><br></td>
+</tr>
+<tr>
+<td>5 OpenAI Triton编译器</td>
+<td><a href="https://www.bilibili.com/video/BV1Kr421M7rt"><img src="img/bilibili.svg" alt="B站" width="20" height="20">Triton概述</a><br><a href="https://www.bilibili.com/video/BV1b9W8eQEW3"><img src="img/bilibili.svg" alt="B站" width="20" height="20">Triton安装</a><br><a href="https://www.bilibili.com/video/BV154421S7TE"><img src="img/bilibili.svg" alt="B站" width="20" height="20">Triton程序编写</a><br></td>
+<td><a href="slides/5-1Triton概述.pptx"><img src="img/PPT.svg" alt="pdf" width="20" height="20">Triton概述slides</a><br><a href="slides/5-2Triton安装方式.pdf"><img src="img/pdf.svg" alt="pdf" width="20" height="20">Triton安装PDF</a><a href="slides/5-2Triton安装方式.pptx"><img src="img/PPT.svg" alt="pdf" width="20" height="20">slides</a><br></td>
+</tr>
+<tr>
+<td>6 深度学习编译优化<br></td>
+<td><a href="https://www.bilibili.com/video/BV1Do4y1L7Xd"><img src="img/bilibili.svg" alt="B站" width="20" height="20">论文分享：图算融合Apollo</a><br><a href="https://www.bilibili.com/video/BV1Y6421G7kL"><img src="img/bilibili.svg" alt="B站" width="20" height="20">论文分享：计算密集型算子融合Chimera</a><br><a href="https://www.bilibili.com/video/BV1Ev4y1Q7L4"><img src="img/bilibili.svg" alt="B站" width="20" height="20">论文分享：机器学习访存密集计算编译优化框架Astitch</a><br><a href="https://www.bilibili.com/video/BV1LM411u7nE"><img src="img/bilibili.svg" alt="B站" width="20" height="20">论文分享：算子调度优化Rammer</a><br><a href="https://www.bilibili.com/video/BV1Tu4y1y7hN"><img src="img/bilibili.svg" alt="B站" width="20" height="20">论文分享：计算图访存调度优化Welder</a><br><a href="https://www.bilibili.com/video/BV1Kh4y1P7Rg"><img src="img/bilibili.svg" alt="B站" width="20" height="20">论文分享：动态控制流编译优化Cocktailer</a><br><a href="https://www.bilibili.com/video/BV1FC4y1R7pu"><img src="img/bilibili.svg" alt="B站" width="20" height="20">论文分享：动态神经网络编译优化BrainStorm</a><br><a href="https://www.bilibili.com/video/BV1RP4y167P4"><img src="img/bilibili.svg" alt="B站" width="20" height="20">论文分享：动态shape深度学习算子自动调优DietCode</a><br><a href="https://www.bilibili.com/video/BV16R4y1U7J5"><img src="img/bilibili.svg" alt="B站" width="20" height="20">论文分享：动态shape深度学习编译器DISC</a><br><a href="https://www.bilibili.com/video/BV1uV4y1M7dQ"><img src="img/bilibili.svg" alt="B站" width="20" height="20">论文分享：深度学习编译接口FreeTensor</a><br></td>
+<td><a href="slides/6-1Apollo.pdf"><img src="img/pdf.svg" alt="pdf" width="20" height="20">论文分享：图算融合Apollo PDF</a><a href="slides/6-1Apollo.pptx"><img src="img/PPT.svg" alt="pdf" width="20" height="20">slides</a><a href="https://zhuanlan.zhihu.com/p/622494022"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a><br><a href="slides/6-3AStitch.pdf"><img src="img/pdf.svg" alt="pdf" width="20" height="20">论文分享：机器学习访存密集计算编译优化框架Astitch PDF</a><a href="slides/6-3AStitch.pptx"><img src="img/PPT.svg" alt="pdf" width="20" height="20">slides</a><a href="https://zhuanlan.zhihu.com/p/593171346"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a><br><a href="slides/6-4Rammer.pptx"><img src="img/pdf.svg" alt="pdf" width="20" height="20">论文分享：算子调度优化Rammer PDF</a><a href="slides/6-4Rammer.pptx"><img src="img/PPT.svg" alt="pdf" width="20" height="20">slides</a><a href="https://zhuanlan.zhihu.com/p/616050345"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a><br><a href="slides/6-6动态控制流优化.pdf"><img src="img/pdf.svg" alt="pdf" width="20" height="20">论文分享：动态控制流编译优化Cocktailer PDF</a><a href="slides/6-6动态控制流优化.pptx"><img src="img/PPT.svg" alt="pdf" width="20" height="20">slides</a><br><a href="slides/6-8DietCode.pdf"><img src="img/pdf.svg" alt="pdf" width="20" height="20">论文分享：动态shape深度学习算子自动调优DietCode PDF</a><a href="slides/6-8DietCode.pptx"><img src="img/PPT.svg" alt="pdf" width="20" height="20">slides</a><a href="https://zhuanlan.zhihu.com/p/601937783"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a><br><a href="slides/6-9动态模型编译.pdf"><img src="img/pdf.svg" alt="pdf" width="20" height="20">论文分享：动态shape深度学习编译器DISC PDF</a><a href="slides/6-9动态模型编译.pptx"><img src="img/PPT.svg" alt="pdf" width="20" height="20">slides</a><a href="https://zhuanlan.zhihu.com/p/595830878"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a><br></td>
+</tr>
+<tr>
+<td>7 自动并行</td>
+<td><a href="https://www.bilibili.com/video/BV1wo4y1L7WJ"><img src="img/bilibili.svg" alt="B站" width="20" height="20">并行划分概述</a><br><a href="https://www.bilibili.com/video/BV11j41177TQ"><img src="img/bilibili.svg" alt="B站" width="20" height="20">论文分享：自动并行Alpa</a><br><a href="https://www.bilibili.com/video/BV1wc411m7ki"><img src="img/bilibili.svg" alt="B站" width="20" height="20">论文分享：自动并行AlpaServe</a><br><a href="https://www.bilibili.com/video/BV1rw41137QG"><img src="img/bilibili.svg" alt="B站" width="20" height="20">论文分享：自动并行AvgPipe</a><br><a href="https://www.bilibili.com/video/BV1sa4y1C7p7"><img src="img/bilibili.svg" alt="B站" width="20" height="20">论文分享：并行程序自动转换</a><br><a href="https://www.bilibili.com/video/BV1e4421c7Gk"><img src="img/bilibili.svg" alt="B站" width="20" height="20">论文分享：高性能计算领域大语言模型HPC-Coder</a><br><a href="https://www.bilibili.com/video/BV1wg411H78v"><img src="img/bilibili.svg" alt="B站" width="20" height="20">论文分享：自动并行FlexFlow</a><br><a href="https://www.bilibili.com/video/BV1Nv4y1j78t"><img src="img/bilibili.svg" alt="B站" width="20" height="20">论文分享：自动并行CoCoNet</a><br><a href="https://www.bilibili.com/video/BV1zs4y1J7tb"><img src="img/bilibili.svg" alt="B站" width="20" height="20">论文分享：新型注意力算法FlashAttention</a><br><a href="https://www.bilibili.com/video/BV1hj411Z7SS"><img src="img/bilibili.svg" alt="B站" width="20" height="20">数据并行通信优化论文分享：MG-WFBP</a><br><a href="https://www.bilibili.com/video/BV1T94y1C7i4"><img src="img/bilibili.svg" alt="B站" width="20" height="20">自动并行论文分享：Merak</a><br></td>
+<td><a href="slides/7-1自动并行-并行划分.pdf"><img src="img/pdf.svg" alt="pdf" width="20" height="20">并行划分概述PDF</a><a href="slides/7-1自动并行-并行划分.pptx"><img src="img/PPT.svg" alt="pdf" width="20" height="20">slides</a><a href="https://zhuanlan.zhihu.com/p/624687216"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a><br><a href="slides/7-8overlapping.pdf"><img src="img/pdf.svg" alt="pdf" width="20" height="20">论文分享：自动并行CoCoNet PDF</a><a href="slides/7-8overlapping.pptx"><img src="img/PPT.svg" alt="pdf" width="20" height="20">slides</a><a href="https://zhuanlan.zhihu.com/p/615806751"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a><br><a href="slides/7-9FlashAttention.pdf"><img src="img/pdf.svg" alt="pdf" width="20" height="20">论文分享：新型注意力算法FlashAttention PDF</a><a href="slides/7-9FlashAttention.pptx"><img src="img/PPT.svg" alt="pdf" width="20" height="20">slides</a><a href="https://zhuanlan.zhihu.com/p/618533434"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎</a><br></td>
+</tr>
+<tr>
+<td>8 深度学习模型压缩</td>
+<td><a href="https://www.bilibili.com/video/BV1ht4y1P73i"><img src="img/bilibili.svg" alt="B站" width="20" height="20">深度学习模型压缩概述</a><br><a href="https://www.bilibili.com/video/BV1614y1T7FS"><img src="img/bilibili.svg" alt="B站" width="20" height="20">论文分享：无数据模型量化ZeroQ</a><br><a href="https://www.bilibili.com/video/BV1eb411971p"><img src="img/bilibili.svg" alt="B站" width="20" height="20">模型压缩方法：模型蒸馏</a><br><a href="https://www.bilibili.com/video/BV1pg4y1J73p"><img src="img/bilibili.svg" alt="B站" width="20" height="20">模型压缩方法：剪枝</a><br><a href="https://www.bilibili.com/video/BV1bL411U747"><img src="img/bilibili.svg" alt="B站" width="20" height="20">模型压缩方法：量化</a><br></td>
+<td><a href="https://zhuanlan.zhihu.com/p/598849539"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">论文分享：无数据模型量化ZeroQ 知乎</a><br><a href="slides/8-3压缩方法.pdf"><img src="img/pdf.svg" alt="pdf" width="20" height="20">模型压缩方法PDF</a><a href="slides/8-3压缩方法.pptx"><img src="img/PPT.svg" alt="pdf" width="20" height="20">slides</a><a href="https://zhuanlan.zhihu.com/p/608197552"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知识蒸馏 知乎</a><a href="https://zhuanlan.zhihu.com/p/609126518"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">剪枝 知乎</a><a href="https://zhuanlan.zhihu.com/p/619914824"><img src="img/zhihu.svg" alt="zhihu" width="20" height="20">量化 知乎</a><br></td>
+</tr>
+</tbody>
+</table>
+<p><img src="img/bottom_logo.png" alt="weixin_logo"></p>
+
+</body>
