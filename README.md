@@ -36,9 +36,9 @@
 |章节名称|视频课程|PPT|
 |1 LLVM整体设计|[<img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili](https://www.bilibili.com/video/BV18j411B7TF)|[<img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎](https://zhuanlan.zhihu.com/p/689182997)|
 |2 Clang前端|[<img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili](https://www.bilibili.com/video/BV11j411B7XZ)|[<img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎](https://zhuanlan.zhihu.com/p/689603871)|
-|3 IR优化|[<img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili](https://www.bilibili.com/video/BV1fX4y1x79Y)||
-|4 代码生成（上）|[<img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili](https://www.bilibili.com/video/BV1tN411B71r)||
-|5 代码生成（下）|[<img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili](https://www.bilibili.com/video/BV1YG411o7AQ)||
+|3 IR优化|[<img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili](https://www.bilibili.com/video/BV1fX4y1x79Y)|[<img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎](https://zhuanlan.zhihu.com/p/20119958394)|
+|4 代码生成（上）|[<img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili](https://www.bilibili.com/video/BV1tN411B71r)|[<img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎](https://zhuanlan.zhihu.com/p/20121961367)|
+|5 代码生成（下）|[<img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili](https://www.bilibili.com/video/BV1YG411o7AQ)|[<img src="img/zhihu.svg" alt="zhihu" width="20" height="20">知乎](https://zhuanlan.zhihu.com/p/20123645994)|
 ### 循环优化专题
 ||||
 |---|---|---|
