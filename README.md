@@ -3,7 +3,8 @@
 
 [<img src="img/bilibili.svg" alt="B站" width="20" height="20">bilibili个人主页](https://space.bilibili.com/1540261574/)
 [<img src="img/zhihu.svg" alt="知乎" width="20" height="20">知乎个人主页](https://www.zhihu.com/people/33-31-35-97)
-[<img src="img/weixin.svg" alt="B站" width="20" height="20">微信名片](img/weixin_logo.png)
+[<img src="img/weixin.svg" alt="微信ID" width="20" height="20">微信名片](img/weixin_logo.png)
+[<img src="img/weixin.svg" alt="微信公众号" width="20" height="20">微信公众号](img/公众号二维码.bmp)
 
 先进编译实验室团队长期致力于高性能计算、编译技术、程序优化等方向的科研工作。先后承研国家重大专项、核高基专项、973、863、自然科学基金等相关课题，在高性能计算、并行程序设计与优化、国产自主可控等相关领域已经形成了若干领先成果，曾获国家科技进步一等奖、省部级科技进步一等奖等奖项。在国内外超算及程序优化的竞赛中，多次获PAC全国并行应用挑战赛优化金奖、银奖、铜奖，ASC世界大学生超级计算机竞赛一等奖、二等奖、卓越奖，CPC国产并行应用挑战赛银奖、铜奖，IPCC-ACM中国国际并行计算挑战赛二等奖等。
 
