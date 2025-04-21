@@ -83,18 +83,9 @@ AI基础设施实操培训系列课程涵盖大模型的训练、微调、部署
 ||||
 |---|---|---|
 |内容板块|分享视频|课件文章|
-|训练篇|[<img src="img/bilibili.svg" alt="B站" width="20" height="20">大模型训练先导课](https://www.bilibili.com/video/BV1R5odYFEV2/)<br>
-[<img src="img/bilibili.svg" alt="B站" width="20" height="20">数据准备与模型结构](https://www.bilibili.com/video/BV1j8oRYcEPP)<br>
-[<img src="img/bilibili.svg" alt="B站" width="20" height="20">预训练任务实现与训练优化](https://www.bilibili.com/video/BV1eBooYYEj4)<br>
-[<img src="img/bilibili.svg" alt="B站" width="20" height="20">预训练计算性能评估]([https://www.bilibili.com/video/BV1R5odYFEV2/](https://www.bilibili.com/video/BV1ACZnY7EMR))<br>||
+|训练篇|[<img src="img/bilibili.svg" alt="B站" width="20" height="20">大模型训练先导课](https://www.bilibili.com/video/BV1R5odYFEV2/)<br>[<img src="img/bilibili.svg" alt="B站" width="20" height="20">数据准备与模型结构](https://www.bilibili.com/video/BV1j8oRYcEPP)<br>[<img src="img/bilibili.svg" alt="B站" width="20" height="20">预训练任务实现与训练优化](https://www.bilibili.com/video/BV1eBooYYEj4)<br>[<img src="img/bilibili.svg" alt="B站" width="20" height="20">预训练计算性能评估]([https://www.bilibili.com/video/BV1R5odYFEV2/](https://www.bilibili.com/video/BV1ACZnY7EMR))<br>||
 |微调篇|||
 |部署篇|||
-|优化篇|[<img src="img/bilibili.svg" alt="B站" width="20" height="20">Triton在PyTorch中的角色](https://www.bilibili.com/video/BV1R5odYFEV2/)<br>
-[<img src="img/bilibili.svg" alt="B站" width="20" height="20">内核性能分析工具](https://www.bilibili.com/video/BV1ZUQ1YtEwP)<br>
-[<img src="img/bilibili.svg" alt="B站" width="20" height="20">Triton编译器及Pass管理器](https://www.bilibili.com/video/BV1VYQdYJEBb)<br>
-[<img src="img/bilibili.svg" alt="B站" width="20" height="20">Triton算子关键参数优化](https://www.bilibili.com/video/BV1miotY3E2D)<br>
-[<img src="img/bilibili.svg" alt="B站" width="20" height="20">Triton算子开发](https://www.bilibili.com/video/BV193fFYkE7P)<br>
-[<img src="img/bilibili.svg" alt="B站" width="20" height="20">Triton访存合并解析](https://www.bilibili.com/video/BV1j6dRY8Erc)<br>
-[<img src="img/bilibili.svg" alt="B站" width="20" height="20">Triton布局介绍](https://www.bilibili.com/video/BV1F45HzLEHo)<br>||
+|优化篇|[<img src="img/bilibili.svg" alt="B站" width="20" height="20">Triton在PyTorch中的角色](https://www.bilibili.com/video/BV1R5odYFEV2/)<br>[<img src="img/bilibili.svg" alt="B站" width="20" height="20">内核性能分析工具](https://www.bilibili.com/video/BV1ZUQ1YtEwP)<br>[<img src="img/bilibili.svg" alt="B站" width="20" height="20">Triton编译器及Pass管理器](https://www.bilibili.com/video/BV1VYQdYJEBb)<br>[<img src="img/bilibili.svg" alt="B站" width="20" height="20">Triton算子关键参数优化](https://www.bilibili.com/video/BV1miotY3E2D)<br>[<img src="img/bilibili.svg" alt="B站" width="20" height="20">Triton算子开发](https://www.bilibili.com/video/BV193fFYkE7P)<br>[<img src="img/bilibili.svg" alt="B站" width="20" height="20">Triton访存合并解析](https://www.bilibili.com/video/BV1j6dRY8Erc)<br>[<img src="img/bilibili.svg" alt="B站" width="20" height="20">Triton布局介绍](https://www.bilibili.com/video/BV1F45HzLEHo)<br>||
 <img src="img/bottom_logo.png" alt="weixin_logo">
 
